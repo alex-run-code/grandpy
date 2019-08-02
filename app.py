@@ -18,6 +18,10 @@ def about():
 def donation():
     return render_template('pages/donation.html')
 
+@app.route('/map/')
+def map():
+    return render_template('pages/map.html')
+
 
 if __name__ == "__main__":
     app.run(debug=True)

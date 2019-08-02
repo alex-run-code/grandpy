@@ -1,7 +1,51 @@
 {% extends 'layouts/layout.html' %}
 {% block body %}
-<div class='container bg-light'>
-<h1>Bienvenu chez GrandPy !</h1>
-<h5> Posez lui une question et il vous répondra :)</h5>
+<div class='container text-center' style='margin-top: 3em;'>
+    <div class='row'>
+        <div class='col-md-2'></div>
+        <div class='col-md-8'>
+            <h1>Bienvenu chez GrandPy !</h1>
+            <p> Posez lui une question et il vous répondra :)</p>
+
+            <form>
+                <div class="row">
+                    <div class="col-md-10">
+                        <input id="question" type="text" class="form-control" placeholder="Pose une question à Grandpy !">
+                    </div>
+                    <div class="col-md-2">
+                        <button id='sendQuestion' type="submit" class="btn btn-primary mb-4 btn-block">Envoyer</button>
+                    </div>
+                    <script>
+                        var question = document.getElementById('question');
+                        var sendQuestion = document.getElementById('sendQuestion');
+                        sentQuestion = 'cathedral notre dame';
+                        sendQuestion.addEventListener('click', function (e) {
+                            e.preventDefault();
+                            console.log(question.value);
+                            sentQuestion = question.value;
+                            initMap()
+                        });
+                    </script> 
+                </div>
+            </form>
+
+            <div class='row'>
+                <div id='question' class='col-md-8' style='text-align: start; font-size: 2em;'>Salut Grandpy !</div>
+                <div class='col-md-4'></div>
+                <div id='reponse' class='col-md-8 offset-4' style='text-align: end; font-size: 2em;'> Bien sûr mon petit !  </div>
+            </div>
+
+            <!-- <div class='row'>
+                <div class="col-md-12">
+                    Map
+                    {% include 'pages/map.html' %}
+                    Map
+                </div> 
+            </div> -->
+
+        </div>
+        <div class='col-md-2'></div>
+    </div>
 </div>
+
 {% endblock %}
