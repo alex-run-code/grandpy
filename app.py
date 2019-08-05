@@ -1,8 +1,10 @@
 #contient les routes
 #! /usr/bin/env python
 from flask import Flask, render_template, url_for
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
 @app.route('/')
 @app.route('/index/')
@@ -21,6 +23,14 @@ def donation():
 @app.route('/map/')
 def map():
     return render_template('pages/map.html')
+
+@app.route('/geocode/')
+def geocode():
+    return render_template('pages/test_google_geocode.html')
+
+@app.route('/api/')
+def api():
+    return 'api'
 
 
 if __name__ == "__main__":
