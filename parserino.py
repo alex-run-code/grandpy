@@ -1,20 +1,23 @@
 import requests
+import re
 
 def getPlace(question):
     keywords = ['du', 'de', 'des', 'le', 'la', 'les']
-    testsplit = question.split(' ')
-    # print(testsplit)
-    for item in testsplit:
-        # print(item)
-        if item in keywords or item.startswith("l'") or item.startswith("d'"):
-            index = testsplit.index(item)
+    q1 = re.sub('[!?]','', question)
+    q2 = re.sub("(l')",'la ', q1)
+    q3 = re.sub("(d')",'de ', q2)
+    splitedQuestion = q3.split(' ')
+    if (any(elem in splitedQuestion for elem in keywords)):
+        for item in splitedQuestion:
             if item in keywords:
-                lieu = ' '.join(testsplit[index+1:])
-            else:
-                lieu = ' '.join(testsplit[index:])
-            # print(lieu)
-            return lieu
-            break
+                index = splitedQuestion.index(item)
+                lieu = ' '.join(splitedQuestion[index+1:])
+                return lieu.strip()
+    else: 
+        lieu = ' '.join(splitedQuestion[0:])
+        return lieu.strip()
+
+
 
 def getInfos(latitude, longitude):
     S = requests.Session()

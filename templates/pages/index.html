@@ -5,90 +5,12 @@
         <div class='col-md-2'></div>
         <div class='col-md-8'>
             <h1>Bienvenu chez GrandPy !</h1>
-            <p> Posez lui une question et il vous répondra :)</p>
-
-            <style>
-                .speech-bubble {
-                    -webkit-border-radius: 4px;
-                            border-radius: 4px;
-                    font-size: 1.2rem;
-                    line-height: 1.3;
-                    padding: 15px;
-                    position: relative;
-                    margin-bottom: 40px;
-                }
-
-                .sb-left {
-                    background: #efefef;
-                }
-
-                .sb-right {
-                    background: #ffdc91;
-                }
-
-                .speech-bubble p {
-                    margin: 0 0 10px;
-                }
-                .speech-bubble p:last-of-type {
-                    margin-bottom: 0px;
-                }
-
-                .sb-left::after {
-                    border-right: 20px solid transparent;
-                    border-top: 20px solid #efefef;
-                    bottom: -20px;
-                    content: "";
-                    position: absolute;
-                    left: 20px;
-                }
-                
-                .sb-right::after {
-                    border-left: 20px solid transparent;
-                    border-top: 20px solid #ffdc91;
-                    bottom: -20px;
-                    content: "";
-                    position: absolute;
-                    right: 20px;
-                }
-                
-                /* Pop */
-                @-webkit-keyframes hvr-pop {
-                50% {
-                    -webkit-transform: scale(1.2);
-                    transform: scale(1.2);
-                }
-                }
-                @keyframes hvr-pop {
-                50% {
-                    -webkit-transform: scale(1.2);
-                    transform: scale(1.2);
-                }
-                }
-
-                .hvr-pop {
-                    display: inline-block;
-                    vertical-align: middle;
-                    -webkit-transform: perspective(1px) translateZ(0);
-                    transform: perspective(1px) translateZ(0);
-                    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
-                    }
-                .hvr-pop {
-                    -webkit-animation-name: hvr-pop;
-                    animation-name: hvr-pop;
-                    -webkit-animation-duration: 0.3s;
-                    animation-duration: 0.3s;
-                    -webkit-animation-timing-function: linear;
-                    animation-timing-function: linear;
-                    -webkit-animation-iteration-count: 1;
-                    animation-iteration-count: 1;
-                    }
-
-            </style>    
+            <p> Il passe son temps à barouder ! Pose lui une question sur un lieu et il dira ce qu'il en sait ! </p>  
 
             <form>
-                <div class="row">
+                <div id='askGrandpy' class="row">
                     <div class="col-md-10">
-                        <input id="question" type="text" class="form-control" placeholder="Pose une question à Grandpy !">
+                        <input id="question" type="text" class="form-control" placeholder="Ex: Grand py, où se trouve la pyramide du Louvre ?">
                     </div>
                     <div class="col-md-2">
                         <button id='sendQuestion' type="submit" class="btn btn-primary mb-4 btn-block">Envoyer</button>
@@ -96,19 +18,20 @@
                 </div>
             </form>
 
-
-                <div id='discussion' class='row' style='margin: 2em'>
-                    <script src="{{ url_for('static', filename='js/ajax.js') }}"></script>
+            <div class="row justify-content-md-center">
+                <div id='loading'>
+                    <img class='spinner' src="{{ url_for('static', filename='img/questionmark.png') }}" style='height: 3em'>
+                    <p>Hmm... Laisse moi réfléchir ...</p>
                 </div>
+            </div>
 
 
-            <!-- <div class='row'>
-                <div class="col-md-12">
-                    Map
-                    {% include 'pages/map.html' %}
-                    Map
-                </div> 
-            </div> -->
+            <div id='discussion' class='row' style='margin: 2em'></div>
+            <script src="{{ url_for('static', filename='js/javascript.js') }}"></script>
+            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBkFah8q7LN6tfLPp04R1HUin3AKex80w4&libraries=places&callback=initMap" async defer></script>
+            
+
+            
 
         </div>
         <div class='col-md-2'></div>

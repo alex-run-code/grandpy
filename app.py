@@ -1,7 +1,8 @@
 #contient les routes
 #! /usr/bin/env python
-from flask import Flask, render_template, url_for
+from flask import Flask, render_template, url_for, request
 from flask_cors import CORS
+import parserino
 
 app = Flask(__name__)
 CORS(app)
@@ -28,9 +29,15 @@ def map():
 def geocode():
     return render_template('pages/test_google_geocode.html')
 
-@app.route('/api/')
+@app.route('/api/',  methods=['GET', 'POST'])
 def api():
-    return 'api'
+    if request.method == 'POST':
+        toBeParsed = request.data
+        toBeParsed = str(toBeParsed)
+        return parserino.getPlace(toBeParsed)
+    else:
+        return 'nothing has been posted'
+
 
 
 if __name__ == "__main__":
