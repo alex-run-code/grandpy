@@ -33,8 +33,8 @@ def geocode():
 def api():
     if request.method == 'POST':
         toBeParsed = request.data
-        toBeParsed = str(toBeParsed)
-        return parserino.getPlace(toBeParsed)
+        toBeParsed = toBeParsed.decode('utf-8')
+        return parserino.getAllInfos(toBeParsed)
     else:
         return 'nothing has been posted'
 

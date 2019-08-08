@@ -117,9 +117,9 @@ sendQuestion.addEventListener('click', function (e) {
             document.getElementById('loading').style = 'none';
             answerDisplayed.textContent = story + infoLocation['streetAddress'];
             document.getElementById('discussion').insertAdjacentElement('afterbegin', mapbubble);
-            document.getElementById('discussion').insertAdjacentElement('afterbegin', answerDisplayed)
-            document.getElementById('discussion').insertAdjacentElement('afterbegin', colmd4)
-            document.getElementById('discussion').insertAdjacentElement('afterbegin', questionDisplayed)
+            document.getElementById('discussion').insertAdjacentElement('afterbegin', answerDisplayed);
+            document.getElementById('discussion').insertAdjacentElement('afterbegin', colmd4);
+            document.getElementById('discussion').insertAdjacentElement('afterbegin', questionDisplayed);
 
         },1000);
     },1000);

@@ -9,12 +9,7 @@ def test_getPlace():
     assert parserino.getPlace(question) == 'cathedrale de paris'
     assert parserino.getPlace(question2) == 'Grand py, ou se trouve cathedrale paris'
     assert parserino.getPlace(question3) == 'louvre'
-    assert parserino.getPlace(question4) == 'adresse de openclassroom'
-
-def test_getInfo():
-    latitude = str(37.7891838)
-    longitude = str(-122.4033522)
-    assert parserino.getInfos(latitude, longitude) == 'Wikimedia Foundation'
+    assert parserino.getPlace(question4) == 'de openclassroom'
 
 
 
