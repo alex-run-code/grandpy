@@ -41,6 +41,7 @@ def getLocationInfos(place):
     }
     return locationInfos
 
+# get Page id from Coord
 def getPage(latitude, longitude):
     URL = "https://fr.wikipedia.org/w/api.php"
     COORDS =  str(latitude) + '|' + str(longitude)
@@ -50,12 +51,31 @@ def getPage(latitude, longitude):
     'gscoord': COORDS,
     'gsradius':10000,
     'gslimit':10,
-    'format':"json"
+    'format':"json",
+    'prop':'info',
 }
     response = requests.get(url=URL, params=PARAMS)
     json_response = response.json()
     PLACES = json_response['query']['geosearch']
     return(PLACES[0]['pageid'])
+
+### CHANTIER - CETTE FONCTION DOIT ETRE TESTEE ### 
+# getpageid from place
+def getPageidFromPlace(place):
+    URL = "https://fr.wikipedia.org/w/api.php"
+    PARAMS = {
+    'action':"query",
+    'list':"search",
+    'srsearch' : place,
+    'format':"json",
+    'prop':'info',
+}
+    response = requests.get(url=URL, params=PARAMS)
+    json_response = response.json()
+    pageid = json_response['query']['search'][0]['pageid']
+    return(pageid)
+
+### FIN DU CHANTIER ###
 
 def getStory(pageid):
     URL = "https://fr.wikipedia.org/w/api.php"
@@ -80,8 +100,10 @@ def getAllInfos(question):
     address = getLocationInfos(place)['address']
     latitude = getLocationInfos(place)['latitude']
     longitude = getLocationInfos(place)['longitude']
-    pageid = getPage(latitude, longitude)
+    # pageid = getPage(latitude, longitude)
+    pageid = getPageidFromPlace(place)
     story = getStory(pageid)
+    link = 'https://fr.wikipedia.org/?curid=' + str(pageid)
     allInfos = {
         'place' : place,
         'address' : address,
@@ -89,9 +111,10 @@ def getAllInfos(question):
         'longitude' : longitude,
         'pageid' : pageid,
         'story' : story,
+        'link' : link,
     }
-    for item in allInfos:
-        print(allInfos[item])
+    return(allInfos)
 
-getAllInfos('Ou se trouve la Tour Eiffel')
+
+
 

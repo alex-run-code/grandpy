@@ -32,8 +32,11 @@ def geocode():
 @app.route('/api/',  methods=['GET', 'POST'])
 def api():
     if request.method == 'POST':
+        print('request data : {}'.format(request.data))
         toBeParsed = request.data
         toBeParsed = toBeParsed.decode('utf-8')
+        print('to be parsed : {}'.format(toBeParsed))
+        print('info from data : {}'.format(parserino.getAllInfos(toBeParsed)))
         return parserino.getAllInfos(toBeParsed)
     else:
         return 'nothing has been posted'

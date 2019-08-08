@@ -76,7 +76,7 @@ class StoryResponse:
 
     @staticmethod
     def json():
-        f= open("grandpyapp/fakewiki.html","r", encoding="utf8" )
+        f= open("fakewiki.html","r", encoding="utf8" )
         fakepage = f.read()
         f.close()
         results = {
@@ -102,6 +102,5 @@ def test_getStory(monkeypatch):
     "elle a accueilli plus de 200 millions de visiteurs depuis son inauguration[o 2]. "
     "Sa taille exceptionnelle et sa silhouette immédiatement reconnaissable en ont "
     "fait un emblème de Paris.")
- 
-    print(goodAnswer)
+
     assert parserino.getStory(685616) == goodAnswer
