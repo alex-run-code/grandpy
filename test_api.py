@@ -132,3 +132,34 @@ def test_getPageidFromPlace(monkeypatch):
 
     monkeypatch.setattr(requests, 'get', mock_get)
     assert parserino.getPageidFromPlace('tour eiffel') == 1359783
+
+class StoryExtractResponse:
+
+    @staticmethod
+    def json():
+        results = {
+                    'batchcomplete': '', 
+                    'query' : {
+                        'pages': {
+                            '1359783': {
+                                'pageid': 1359783, 
+                                'ns': 0, 
+                                'title': 'Tour Eiffel', 
+                                'lat': 48.858296, 
+                                'lon': 2.294479, 
+                                'dist': 8.2, 
+                                'primary': '',
+                                'extract' : 'La tour Eiffel  est une tour de fer puddlé de 324 mètres de hauteur (avec antennes)...',
+                                }
+                            } 
+                        }
+                    }      
+        return results
+
+def test_getStoryExtract(monkeypatch):
+
+    def mock_get(*arg, **kwargs):
+        return StoryExtractResponse 
+
+    monkeypatch.setattr(requests, 'get', mock_get)
+    assert parserino.getStoryExtract(1359783) == 'La tour Eiffel  est une tour de fer puddlé de 324 mètres de hauteur (avec antennes)...'

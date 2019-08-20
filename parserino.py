@@ -59,7 +59,6 @@ def getPage(latitude, longitude):
     PLACES = json_response['query']['geosearch']
     return(PLACES[0]['pageid'])
 
-### CHANTIER - CETTE FONCTION DOIT ETRE TESTEE ### 
 # getpageid from place
 def getPageidFromPlace(place):
     URL = "https://fr.wikipedia.org/w/api.php"
@@ -74,8 +73,6 @@ def getPageidFromPlace(place):
     json_response = response.json()
     pageid = json_response['query']['search'][0]['pageid']
     return(pageid)
-
-### FIN DU CHANTIER ###
 
 def getStory(pageid):
     URL = "https://fr.wikipedia.org/w/api.php"
@@ -95,6 +92,21 @@ def getStory(pageid):
     cleanStory = cleanStory.replace('\n','')
     return(cleanStory)
 
+def getStoryExtract(pageid):
+    URL = "https://fr.wikipedia.org/w/api.php"
+    PARAMS = {
+        'action': "query",
+        'pageids': pageid,
+        'format': "json",
+        'prop': 'extracts',
+        'explaintext' : 1,
+        'exsentences' : 2,
+    }
+    response = requests.get(url=URL, params=PARAMS)
+    json_response = response.json()
+    story = json_response['query']['pages'][str(pageid)]['extract']
+    return(story)
+
 def getAllInfos(question):
     place = getPlace(question)
     address = getLocationInfos(place)['address']
@@ -102,7 +114,7 @@ def getAllInfos(question):
     longitude = getLocationInfos(place)['longitude']
     # pageid = getPage(latitude, longitude)
     pageid = getPageidFromPlace(place)
-    story = getStory(pageid)
+    story = getStoryExtract(pageid)
     link = 'https://fr.wikipedia.org/?curid=' + str(pageid)
     allInfos = {
         'place' : place,
