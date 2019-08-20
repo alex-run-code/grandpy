@@ -23,7 +23,7 @@ def getPlace(question):
 def getLocationInfos(place):
     URL = 'https://maps.googleapis.com/maps/api/place/findplacefromtext/json?'
     PARAMS = {
-        'key': 'AIzaSyBkFah8q7LN6tfLPp04R1HUin3AKex80w4',
+        'key': 'AIzaSyA1OnuGPYPbpYp8cRuTR2B4_7tKGiIutHk',
         'input' : place,
         'inputtype': 'textquery',
         'fields' : 'formatted_address,geometry'

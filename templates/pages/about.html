@@ -1,6 +1,34 @@
 {% extends 'layouts/layout.html' %}
 {% block body %}
-<div class='container text-center' style='margin-top: 3em;'>
-<h1>A propos</h1>
+<div class='container text-left' style='margin-top: 3em;'>
+    <div class='row'>
+            <div class='col-md-2'></div>
+            <div class='col-md-8'>
+                <h1>A propos</h1>
+                </br>
+
+                <p>Grandpy est un robot qui indique l'adresse d'un lieu et raconte une histoire à propos de celui-ci après avoir été questionné par l'utilisateur. 
+                Il s'agit d'un des projets du parcours python d'OpenClassroom. </p>
+
+                <strong>Comment ça fonctionne ?</strong>
+
+                <p></br>Le robot analyse la phrase est ecrite et va rechercher des mots-clé comme "du, de, le, la". Lorsqu'il rencontre un de ces mots-clé, il considère que ce qui 
+                    vient après est le lieu recherché. Dans l'expression considérée comme le lieu recherché, certains mots sont retirés, comme le mot "adresse".</p> 
+
+                <strong>Exemple:</strong> 
+
+                <p></br> Dans <i>"Grand py, ou se trouve <strong>la</strong> tour eiffel ?"</i>, le lieu est <i>"tour eiffel"</i>.</p>
+                <p>Dans <i>"Grand py, quelle est <strong>l'</strong>adresse de la cathédrale Notre-Dame de Paris ?</i>, le lieu est <i>"adresse de la cathédrale Notre-Dame de Paris"</i>. 
+                Le mot <i>"adresse"</i> est ensuite retiré. L'expression <i>"de la cathédrale Notre-Dame De Paris"</i> sera envoyée à google.</p>
+
+                <strong>Et ensuite ?</strong>
+
+                <p></br>L'api de google nous fournit ensuite certaines informations sur le lieu, dont son adresse et ses coordonnées. Grâce à ces informations, on génère une carte avec un marqueur
+                à l'emplacement du lieu. Suite à cela, c'est l'API de wikipédia qui prend le relais. Grâce au nom du lieu ou à ses coordonnées, elle nous renvoie un page wikipédia dont on
+                extrait l'introduction de l'article, qui servira à raconter l'histoire.</p>
+
+            </div>
+            <div class='col-md-2'></div>
+    </div>
 </div>
 {% endblock %}

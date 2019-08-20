@@ -6,6 +6,8 @@ function ajaxPost(url, data, callback) {
             callback(req.responseText)
         } else {
             console.error('Error')
+            document.getElementById('loading').style = 'none';
+            document.getElementById('notfound').style = 'display: flex';
         }
     });
     req.send(data);
@@ -15,11 +17,6 @@ function ajaxPost(url, data, callback) {
 var question = document.getElementById('question');
 var sendQuestion = document.getElementById('sendQuestion');
 
-// GOOGLE MAP // 
-
-// This example requires the Places library. Include the libraries=places
-// parameter when you first load the API. For example:
-// <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
 
 var map;
 var marker;
@@ -41,6 +38,7 @@ function initMap(latitude, longitude) {
 sendQuestion.addEventListener('click', function (e) {
 
     e.preventDefault();
+    document.getElementById('notfound').style = 'display: none';
     document.getElementById('loading').style = 'display: block';
     
     var questionDisplayed = document.createElement('div');
@@ -52,8 +50,6 @@ sendQuestion.addEventListener('click', function (e) {
     var colmd4 = document.createElement('div');
     colmd4.className = 'col-md-4';
 
-    // var answerFromApi;
-    // console.log('question asked : ' + questionAsked)
     var dictAnswer;
 
     ajaxPost('http://127.0.0.1:5000/api/', questionAsked, function(reponse){
@@ -62,8 +58,6 @@ sendQuestion.addEventListener('click', function (e) {
     
 
     var grandpyIntro =  'Bien sûr mon petit ! Voici l\'adresse : ';
-
-    //setTimeout(function() {
 
     document.getElementById('loading').style = 'none';
     initMap(dictAnswer['latitude'], dictAnswer['longitude']);
@@ -94,6 +88,6 @@ sendQuestion.addEventListener('click', function (e) {
     document.getElementById('discussion').insertAdjacentElement('afterbegin', colmd4);
     document.getElementById('discussion').insertAdjacentElement('afterbegin', questionDisplayed);
 
-    // },8000);
+
     });
 }); 

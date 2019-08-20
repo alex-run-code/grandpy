@@ -25,10 +25,19 @@
                 </div>
             </div>
 
+            <div class="row justify-content-md-center">
+                    <div id='notfound' style='display: none'>
+                        <div class='col'>
+                            <img src="{{ url_for('static', filename='img/biggrandpy.png') }}" style='height: 10em;'>
+                            <p><i>heu... rien ne me vient à propos de ce lieu !</i></p>
+                        </div>
+                    </div>
+            </div>
+
 
             <div id='discussion' class='row' style='margin: 2em'></div>
             <script src="{{ url_for('static', filename='js/javascript.js') }}"></script>
-            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBkFah8q7LN6tfLPp04R1HUin3AKex80w4&libraries=places&callback=initMap" async defer></script>
+            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA1OnuGPYPbpYp8cRuTR2B4_7tKGiIutHk&libraries=places&callback=initMap" async defer></script>
             
 
             

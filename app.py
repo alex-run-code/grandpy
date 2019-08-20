@@ -21,10 +21,6 @@ def about():
 def donation():
     return render_template('pages/donation.html')
 
-@app.route('/map/')
-def map():
-    return render_template('pages/map.html')
-
 @app.route('/geocode/')
 def geocode():
     return render_template('pages/test_google_geocode.html')
