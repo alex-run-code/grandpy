@@ -104,3 +104,31 @@ def test_getStory(monkeypatch):
     "fait un emblème de Paris.")
 
     assert parserino.getStory(685616) == goodAnswer
+
+class PageidfromplaceResponse:
+
+    @staticmethod
+    def json():
+        results = {
+                    'batchcomplete': '', 
+                    'query': {
+                        'search': [{
+                            'pageid': 1359783, 
+                            'ns': 0, 
+                            'title': 'Tour Eiffel', 
+                            'lat': 48.858296, 
+                            'lon': 2.294479, 
+                            'dist': 8.2, 
+                            'primary': ''
+                            }]
+                        } 
+                    }      
+        return results
+
+def test_getPageidFromPlace(monkeypatch):
+
+    def mock_get(*arg, **kwargs):
+        return PageidfromplaceResponse 
+
+    monkeypatch.setattr(requests, 'get', mock_get)
+    assert parserino.getPageidFromPlace('tour eiffel') == 1359783
