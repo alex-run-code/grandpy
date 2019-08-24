@@ -52,7 +52,7 @@ sendQuestion.addEventListener('click', function (e) {
 
     var dictAnswer;
 
-    ajaxPost('http://127.0.0.1:5000/api/', questionAsked, function(reponse){
+    ajaxPost('/api/', questionAsked, function(reponse){
         answerFromApi = reponse;
         dictAnswer = JSON.parse(answerFromApi);
     
