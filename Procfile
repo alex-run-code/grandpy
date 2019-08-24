@@ -1,1 +1,1 @@
-web: gunicorn mygrandpyapp.wsgi
+web: gunicorn app.py
