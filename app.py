@@ -3,6 +3,7 @@
 from flask import Flask, render_template, url_for, request
 from flask_cors import CORS
 import parserino
+import config
 
 app = Flask(__name__)
 CORS(app)
@@ -11,7 +12,7 @@ CORS(app)
 @app.route('/')
 @app.route('/index/')
 def home():
-    return render_template('pages/index.html')
+    return render_template('pages/index.html', GOOGLE_API_KEY_MAPS = config.GOOGLE_API_KEY_MAPS)
 
 
 @app.route('/about/')

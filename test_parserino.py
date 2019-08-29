@@ -1,4 +1,4 @@
-from grandpyapp import parserino
+import parserino
 
 
 def test_getPlace():
