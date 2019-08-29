@@ -5,15 +5,12 @@
         <link href="https://fonts.googleapis.com/css?family=Pacifico|Righteous&display=swap" rel="stylesheet">
         <link href="{{ url_for('static', filename='css/css.css') }}" rel="stylesheet">
         <script src="https://kit.fontawesome.com/d0237179d0.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     </head>
     <body class="d-flex flex-column h-100">
-
                 {% include 'layouts/header.html' %}
                 {% block body %}{% endblock %}
                 {% include 'layouts/footer.html' %}
-
-        <!-- le script commenté déclenche une erreur -->
-        <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script> -->
     </body>
 </html>
 

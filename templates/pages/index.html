@@ -37,11 +37,8 @@
 
             <div id='discussion' class='row' style='margin: 2em'></div>
             <script src="{{ url_for('static', filename='js/javascript.js') }}"></script>
-            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA1OnuGPYPbpYp8cRuTR2B4_7tKGiIutHk&libraries=places&callback=initMap" async defer></script>
-            
-
-            
-
+            <script src="https://maps.googleapis.com/maps/api/js?key={{ GOOGLE_API_KEY_MAPS }}&libraries=places&callback=initMap" async defer></script>
+    
         </div>
         <div class='col-md-2'></div>
     </div>
