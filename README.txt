@@ -14,7 +14,7 @@ How to launch
 How to test
 
 1. Position yourself in the root folder.
-2. Launch pytest
+2. Launch python -m pytest
 
 Ressources
 

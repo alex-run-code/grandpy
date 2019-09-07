@@ -1,7 +1,9 @@
 import requests
 import config
 
+
 def getLocationInfos(place):
+    """ return adress, latitude and longitue of place from Google API """
     URL = 'https://maps.googleapis.com/maps/api/place/findplacefromtext/json?'
     PARAMS = {
         'key': config.GOOGLE_API_KEY_GEOCODING,

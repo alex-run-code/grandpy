@@ -1,8 +1,10 @@
 import requests
 from bs4 import BeautifulSoup
 
+
 # get Page id from Coord
 def getPage(latitude, longitude):
+    """ return wikipedia pageid from latitude and longitude """
     URL = "https://fr.wikipedia.org/w/api.php"
     COORDS = str(latitude) + '|' + str(longitude)
     PARAMS = {
@@ -22,6 +24,7 @@ def getPage(latitude, longitude):
 
 # getpageid from place
 def getPageidFromPlace(place):
+    """ return wikipedia pageid from the name of the place """
     URL = "https://fr.wikipedia.org/w/api.php"
     PARAMS = {
         'action': "query",
@@ -37,6 +40,9 @@ def getPageidFromPlace(place):
 
 
 def getStory(pageid):
+    """ parse the html of the wikipedia page based on pageid
+    return the begining of the first section
+    """
     URL = "https://fr.wikipedia.org/w/api.php"
     PARAMS = {
         'action': "parse",
@@ -56,6 +62,9 @@ def getStory(pageid):
 
 
 def getStoryExtract(pageid):
+    """ extract the begining of the introduction of a wikipedia page
+        based on page id
+    """
     URL = "https://fr.wikipedia.org/w/api.php"
     PARAMS = {
         'action': "query",

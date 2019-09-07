@@ -12,7 +12,7 @@ CORS(app)
 @app.route('/')
 @app.route('/index/')
 def home():
-    return render_template('pages/index.html', GOOGLE_API_KEY_MAPS = config.GOOGLE_API_KEY_MAPS)
+    return render_template('pages/index.html', GOOGLE_API_KEY_MAPS=config.GOOGLE_API_KEY_MAPS)
 
 
 @app.route('/about/')

@@ -2,7 +2,9 @@ import re
 import google_api
 import mediawiki_api
 
+
 def getPlace(question):
+    """ Parse the question using keywords, return only the place """
     keywords = ['du', 'de', 'des', 'le', 'la', 'les']
     q1 = re.sub('[!?]', '', question)
     q2 = re.sub("(l')", 'la ', q1)
@@ -21,6 +23,10 @@ def getPlace(question):
 
 
 def getAllInfos(question):
+    """ uses all the functions to return place, address,
+    latitude longitude, pageid, story, URL in a dictionnary
+    from the question of the user
+    """
     place = getPlace(question)
     locationInfos = google_api.getLocationInfos(place)
     # pageid = getPage(latitude, longitude)

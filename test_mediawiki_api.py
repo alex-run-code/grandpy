@@ -24,8 +24,12 @@ class PageResponse:
 
 
 def test_getPage(monkeypatch):
+    """ test the function getStory """
 
     def mock_get(*arg, **kwargs):
+        """ return the results from method
+        json of class PageResponse
+        """
         return PageResponse
 
     monkeypatch.setattr(requests, 'get', mock_get)
@@ -50,8 +54,12 @@ class StoryResponse:
 
 
 def test_getStory(monkeypatch):
+    """ test the function getStory """
 
     def mock_get(*arg, **kwargs):
+        """ return the results from method
+        json of class StoryResponse
+        """
         return StoryResponse
 
     monkeypatch.setattr(requests, 'get', mock_get)
@@ -90,8 +98,12 @@ class PageidfromplaceResponse:
 
 
 def test_getPageidFromPlace(monkeypatch):
+    """ test the function getPageidFromPlace """
 
     def mock_get(*arg, **kwargs):
+        """ return the results from method
+        json of class PageidfromplaceResponse
+        """
         return PageidfromplaceResponse
 
     monkeypatch.setattr(requests, 'get', mock_get)
@@ -125,8 +137,12 @@ class StoryExtractResponse:
 
 
 def test_getStoryExtract(monkeypatch):
+    """ test the function getStoryExtract """
 
     def mock_get(*arg, **kwargs):
+        """ return the results from method
+        json of class StoryExtractResponse
+        """
         return StoryExtractResponse
 
     monkeypatch.setattr(requests, 'get', mock_get)

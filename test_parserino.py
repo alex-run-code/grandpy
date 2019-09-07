@@ -2,6 +2,7 @@ import parserino
 
 
 def test_getPlace():
+    """ test getPlace function"""
     question = 'Grand py, ou se trouve la cathedrale de paris ?'
     question2 = 'Grand py, ou se trouve cathedrale paris ?'
     question3 = 'le louvre'

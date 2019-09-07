@@ -31,8 +31,12 @@ class LocInfoResponse:
 
 
 def test_getLocationInfos(monkeypatch):
+    """ test the function getLocationInfos """
 
     def mock_get(*arg, **kwargs):
+        """ return the results from method
+        json of class LocInfoResponse
+        """
         return LocInfoResponse
 
     monkeypatch.setattr(requests, "get", mock_get)
